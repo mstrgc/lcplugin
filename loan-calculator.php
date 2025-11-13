@@ -4,6 +4,6 @@
  * Plugin name: Loan Calculator Plugin
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if(!defined('ABSPATH')) {
 	exit;
 }
