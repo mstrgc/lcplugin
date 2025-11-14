@@ -5,12 +5,14 @@ if(!defined('ABSPATH')) {
 }
 
 require_once LCPLUGIN_INCLUDES . 'class-loan-ui.php';
-require_once LCPLUGIN_INCLUDES . 'class-base-config.php';
 
 class Loan_Calc_Loader{
   public function __construct($bank){
-    $this->bank = $bank;
-    $this->config = new Test_Config();
+    if(file_exists(LCPLUGIN_CONFIG . "{$bank}.php")){
+      require_once LCPLUGIN_CONFIG . "{$bank}.php";
+      $config_class = ucfirst($bank) . '_Config';
+    }
+    $this->config = new $config_class();
     $this->load_ui();
   }
 
