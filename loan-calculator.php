@@ -13,4 +13,4 @@ define('LCPLUGIN_INCLUDES', LCPLUGIN_PATH . 'includes/');
 
 require_once LCPLUGIN_INCLUDES . 'class-loan-shortcode.php';
 
-new LoanCalcShortcode();
+new Loan_Calc_Shortcode();
