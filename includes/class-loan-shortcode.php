@@ -4,6 +4,8 @@ if(!defined('ABSPATH')) {
   exit;
 }
 
+require_once LCPLUGIN_INCLUDES . 'class-loan-loader.php';
+
 class Loan_Calc_Shortcode{
   public function __construct(){
     add_shortcode('loan_calculator', [$this, 'init_shortcode']);
@@ -12,11 +14,11 @@ class Loan_Calc_Shortcode{
   public function init_shortcode($attrs){
     $lcplugin_attrs = shortcode_atts(
       [
-        'bank_name' => '',
+        'bank' => '',
       ], $attrs
     );
 
-    return $this->render($lcplugin_attrs['bank_name']);
+    new Loan_Calc_Loader($lcplugin_attrs['bank']);
   }
 
   public function render($bank){
