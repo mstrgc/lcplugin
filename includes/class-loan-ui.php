@@ -5,9 +5,11 @@ if(!defined('ABSPATH')) {
 }
 
 class Loan_Calc_UI{
-  public function __construct(){}
+  public function __construct(){
+    $this->render_ui();
+  }
 
-  public function render_io(){
-    
+  public function render_ui(){
+    echo "<p>ui works</p>";
   }
 }

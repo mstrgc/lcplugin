@@ -4,6 +4,8 @@ if(!defined('ABSPATH')) {
   exit;
 }
 
+require_once LCPLUGIN_INCLUDES . 'class-loan-ui.php';
+
 class Loan_Calc_Loader{
   public function __construct($bank){
     $this->bank = $bank;
@@ -11,6 +13,6 @@ class Loan_Calc_Loader{
   }
 
   public function load_ui(){
-    echo '<p>loader works</p>';
+    new Loan_Calc_UI();
   }
 }

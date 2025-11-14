@@ -20,10 +20,4 @@ class Loan_Calc_Shortcode{
 
     new Loan_Calc_Loader($lcplugin_attrs['bank']);
   }
-
-  public function render($bank){
-    ob_start();
-    echo "<p>{$bank}</p>";
-    return ob_get_clean();
-  }
 }
