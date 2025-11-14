@@ -11,19 +11,6 @@ class Loan_Calc_Loader{
   public function __construct($bank){
     $this->bank = $bank;
     $this->config = new Test_Config();
-    $this->create_form();
-  }
-
-  public function create_form(){
-    /*$inputs =[
-      ['type' => 'text', 'name' => 'price1'],
-      ['type' => 'range', 'name' => 'price2'],
-      ['type' => 'text', 'name' => 'price3'],
-      ['type' => 'range', 'name' => 'price4']
-    ];
-    foreach($inputs as $input){
-      $this->config->add_input($input);
-    }*/
     $this->load_ui();
   }
 
