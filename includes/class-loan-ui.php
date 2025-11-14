@@ -5,8 +5,7 @@ if(!defined('ABSPATH')) {
 }
 
 class Loan_Calc_UI{
-  public function __construct($input){
-    $this->render_ui();
+  public function __construct(){
   }
 
   public function create_input($attrs){
@@ -19,6 +18,9 @@ class Loan_Calc_UI{
   private $inputs =[];
 
   public function render_ui(){
-    echo '';
+    foreach($this->inputs as $input){
+      echo '<label>' . $input['name'] . '</label>';
+      echo '<input type="' . $input['type'] . '" name="' . $input['name'] . '">';
+    }
   }
 }

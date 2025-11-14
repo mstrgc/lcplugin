@@ -13,11 +13,13 @@ class Loan_Calc_Loader{
   }
 
   public function create_form(){
-    $input1 = '<p>test1</p>';
+    $input1 = ['type' => 'text', 'name' => 'price'];
     $this->load_ui($input1);
   }
 
   public function load_ui($input){
-    new Loan_Calc_UI($input);
+    $class = new Loan_Calc_UI();
+    $class->create_input($input);
+    $class->render_ui();
   }
 }
