@@ -27,15 +27,3 @@ class Loan_Calc_Base_Config{
 
   public function calculate(){}
 }
-
-class Test_Config extends Loan_Calc_Base_Config{
-
-  public function __construct(){
-    $this->add_input($this->input_list);
-  }
-
-  private $input_list = [
-    ['type' => 'range', 'name'=> 'fee'],
-    ['type' => 'text', 'name'=> 'deposit']
-  ];
-}
