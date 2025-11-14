@@ -10,12 +10,12 @@ require_once LCPLUGIN_INCLUDES . 'class-base-config.php';
 class Loan_Calc_Loader{
   public function __construct($bank){
     $this->bank = $bank;
-    $this->config = new Loan_Calc_Base_Config();
+    $this->config = new Test_Config();
     $this->create_form();
   }
 
   public function create_form(){
-    $inputs =[
+    /*$inputs =[
       ['type' => 'text', 'name' => 'price1'],
       ['type' => 'range', 'name' => 'price2'],
       ['type' => 'text', 'name' => 'price3'],
@@ -23,7 +23,7 @@ class Loan_Calc_Loader{
     ];
     foreach($inputs as $input){
       $this->config->add_input($input);
-    }
+    }*/
     $this->load_ui();
   }
 
