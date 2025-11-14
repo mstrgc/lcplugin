@@ -12,7 +12,9 @@ class Melli_Config extends Loan_Calc_Base_Config{
   }
 
   private $input_list = [
-    ['type' => 'range', 'name'=> 'fee'],
-    ['type' => 'text', 'name'=> 'deposit']
+    ['type' => 'text', 'name'=> 'price'],
+    ['type' => 'range', 'name'=> 'payment'],
+    ['type' => 'range', 'name'=> 'deposit_duration'],
+    ['type'=> 'radio', 'name'=> 'fee']
   ];
 }
