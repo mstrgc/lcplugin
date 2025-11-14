@@ -22,7 +22,8 @@ class Loan_Calc_Base_Config{
       'name' => $attr['name'],
       'id' => $attr['name'],
       'min' => $attr['min'],
-      'max' => $attr['max']
+      'max' => $attr['max'],
+      'step' => $attr['step']
     ];
   }
 
