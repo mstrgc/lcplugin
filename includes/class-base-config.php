@@ -12,10 +12,10 @@ class Loan_Calc_Base_Config{
   public function add_input($attrs){
     $this->inputs[] = [
       'type' => $attrs['type'],
-      'name' => $attrs['name'],
-      'value'=> $attrs['value'],
-      'min' => $attrs['min'],
-      'max' => $attrs['max']
+      'name' => $attrs['name']
+      //'value'=> $attrs['value'],
+      //'min' => $attrs['min'],
+      //'max' => $attrs['max']
     ];
   }
 
