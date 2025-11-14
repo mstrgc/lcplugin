@@ -11,8 +11,8 @@ class Loan_Calc_Base_Config{
 
   public function add_input($attrs){
     foreach($attrs as $attr){
-      if($attr['type'] == 'range') return $this->add_range_input($attr);
-      if($attr['type'] == 'radio') return $this->add_radio_input($attr);
+      if($attr['type'] == 'range') $this->add_range_input($attr);
+      if($attr['type'] == 'radio') $this->add_radio_input($attr);
     }
   }
 
