@@ -17,7 +17,7 @@ class Loan_Calc_UI{
 
   private function render_range_input($attrs){
     echo "<label for='{$attrs['name']}'>{$attrs['name']}</label>";
-    echo "<input type='range' name='{$attrs['name']}' id='{$attrs['name']}' min='{$attrs['min']}' max='{$attrs['max']}' step='{$attrs['step']}'>";
+    echo "<input type='range' name='{$attrs['name']}' id='{$attrs['name']}' min='{$attrs['min']}' max='{$attrs['max']}' step='{$attrs['step']}' value='{$attrs['min']}'>";
   }
 
   private function render_radio_input($attrs){
