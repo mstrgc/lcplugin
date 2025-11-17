@@ -11,7 +11,11 @@ class Shortcode{
     add_shortcode('loan_calculator', [$this,'render_shortcode']);
   }
 
-  public function render_shortcode(){
-    echo 'hello';
+  public function render_shortcode($attrs){
+    $shortcode_attrs = shortcode_atts(
+      [
+        'bank' => '',
+      ], $attrs
+    );
   }
 }
