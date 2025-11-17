@@ -46,13 +46,16 @@ class BankConfigBase{
           $max = $input['max'];
           $step = $input['step'];
           $form[] = "<label for='{$name}'>{$label}</label><input name='{$name}' id='{$name}' type='range' min='{$min}' max='{$max}' step='{$step}'>";
+          break;
         case 'select':
           $name = $input['name'];
+          echo $name;
           $label = $input['label'];
           $options = $input['options'];
           foreach($options as $option){
             $form[] = "<label for='{$name}_{$option}'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}'>{$option}%</label>";
           }
+          break;
       }
     }
     return $form;
