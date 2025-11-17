@@ -15,9 +15,7 @@ class Shortcode{
 
   public function render_shortcode($attrs){
     $shortcode_attrs = shortcode_atts(
-      [
-        'bank' => '',
-      ], $attrs
+      ['bank' => ''], $attrs
     );
 
     require_once LCPLUGIN_CONFIG . ucfirst($shortcode_attrs['bank']) . '.php';
@@ -26,6 +24,8 @@ class Shortcode{
     ob_start();
     foreach($form as $row){
       echo $row;
+      echo '<br/>';
     }
+    return ob_get_clean();
   }
 }

@@ -49,7 +49,6 @@ class BankConfigBase{
           break;
         case 'select':
           $name = $input['name'];
-          echo $name;
           $label = $input['label'];
           $options = $input['options'];
           foreach($options as $option){
