@@ -26,6 +26,19 @@ class Shortcode{
       echo $row;
       echo '<br/>';
     }
+    echo "<script>
+    fetch('/word/wp-json/loan-calculator/v1/calculate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        price: 1000000
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log('Monthly payment:', data.price);
+    });
+    </script>";
     return ob_get_clean();
   }
 }

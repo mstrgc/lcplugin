@@ -9,7 +9,7 @@ if(!defined('ABSPATH')) {
 }
 
 class RestEndpoint{
-  public function register() {
+  public function register(){
     add_action('rest_api_init', function () {
       register_rest_route(
         'loan-calculator/v1',
@@ -28,7 +28,7 @@ class RestEndpoint{
     $price = $request->get_param('price');
 
     return [
-      'amount' => $price,
+      'price' => $price,
     ];
   }
 }
