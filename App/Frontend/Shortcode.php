@@ -11,8 +11,6 @@ class Shortcode{
     add_shortcode('loan_calculator', [$this,'render_shortcode']);
   }
 
-  public $bank;
-
   public function render_shortcode($attrs){
     $shortcode_attrs = shortcode_atts(
       ['bank' => ''], $attrs
@@ -23,26 +21,12 @@ class Shortcode{
     $form = $bank_config->set_form();
     $this->enqueue_assets();
     ob_start();
+    echo '<form id="loan-form">';
     foreach($form as $row){
       echo $row;
       echo '<br/>';
     }
-    echo "<script>
-    fetch('/word/wp-json/loan-calculator/v1/calculate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        price: 1000000,
-        payment: 12,
-        fee: 2,
-        deposit_duration: 3
-      })
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log('Monthly payment:', data.price);
-    });
-    </script>";
+    echo '</form>';
     return ob_get_clean();
   }
 
@@ -56,6 +40,6 @@ class Shortcode{
   }
 
   public function enqueue_assets(){
-    wp_enqueue_script('loan-config', LCPLUGIN_URL . 'App/public/loan-config.js', ['jquery']);
+    wp_enqueue_script('loan-config', LCPLUGIN_URL . 'App/public/loan-config.js', ['jquery'], '', true);
   }
 }

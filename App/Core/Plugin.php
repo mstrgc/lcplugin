@@ -10,6 +10,9 @@ if(!defined('ABSPATH')) {
 }
 
 class Plugin{
+
+  protected $active_config = null;
+  
   public function __construct(){
     new Shortcode();
     $rest_api = new RestEndpoint();
