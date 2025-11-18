@@ -2,7 +2,8 @@
     "name": "vendor/lcplugin",
     "autoload": {
         "psr-4": {
-            "App\\": "App/"
+            "App\\": "App/",
+            "Config\\": "config/"
         }
     },
     "require": {}

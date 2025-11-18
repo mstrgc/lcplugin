@@ -1,5 +1,7 @@
 <?php
 
+namespace Config;
+
 if(!defined('ABSPATH')) {
   exit;
 }
@@ -115,7 +117,8 @@ class Melli extends BankConfigBase{
   }
 
   public function calculate(array $inputs): int {
-    $factor = $this->calc_data[$inputs['fee']][$inputs['date']][$inputs['time']];
+    $factor = $this->calc_data[$inputs['fee']][$inputs['payment']][$inputs['deposit_duration']];
+    error_log($factor);
     $average = ($inputs['price'] / $factor) * 100;
     return intval($average);
   }

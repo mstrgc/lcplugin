@@ -2,7 +2,7 @@
 
 namespace App\Frontend;
 
-use Melli;
+use App\Frontend\Shortcode;
 
 if(!defined('ABSPATH')) {
   exit;
@@ -23,12 +23,8 @@ class RestEndpoint{
     });
   }
 
-  public function calc(\WP_REST_Request $request){
-    // Get form data
-    $price = $request->get_param('price');
-
-    return [
-      'price' => $price,
-    ];
+  public function calc($request){
+    $class = new Shortcode();
+    return $class->bank_calc($request);
   }
 }
