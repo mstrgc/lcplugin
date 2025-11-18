@@ -28,6 +28,6 @@ class RestEndpoint{
     $config = new \App\Calculator\CalculatorService($data['bank']);
     $result = $config->calculator($data);
 
-    return ['deposit' => $result];
+    return $result;
   }
 }

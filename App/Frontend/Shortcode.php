@@ -32,6 +32,7 @@ class Shortcode{
       echo '<br/>';
     }
     echo '</form>';
+    echo '<div id="loan-result"></div>';
     return ob_get_clean();
   }
 

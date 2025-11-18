@@ -14,7 +14,7 @@ class Melli extends BankConfigBase{
     $this->bank_name = 'melli';
     $this->input_schema = [
       [
-        'name' => 'price',
+        'name' => 'loan_price',
         'type' => 'range',
         'label' => 'مبلغ',
         'min' => '1000000',
@@ -51,7 +51,7 @@ class Melli extends BankConfigBase{
         'suffix' => 'تومان'
       ],
       [
-        'name' => 'loan',
+        'name' => 'loan_price',
         'label' => 'تسهیلات درخواستی',
         'suffix' => 'تومان'
       ],
@@ -61,7 +61,7 @@ class Melli extends BankConfigBase{
         'suffix' => 'تومان'
       ],
       [
-        'name' => 'loan_surpass',
+        'name' => 'fee',
         'label' => 'کارمزد تسهیلات',
         'suffix' => 'درصد'
       ],
@@ -117,17 +117,19 @@ class Melli extends BankConfigBase{
   }
 
   public function calculate(array $inputs): int {
-    $factor = $this->calc_data[$inputs['fee']][$inputs['payment']][$inputs['deposit_duration']];
+    $factor = $this->calc_data[$inputs['fee']][$inputs['payment']][($inputs['deposit_duration'] - 1)];
     error_log($factor);
-    $average = ($inputs['price'] / $factor) * 100;
+    $average = ($inputs['loan_price'] / $factor) * 100;
     return intval($average);
   }
 
   public function set_result_table($result_values): array{
     $result_table = [];
+    $deposit = $this->calculate($result_values);
+    $result_values['deposit'] = $deposit;
     foreach($this->result_schema as $row){
       $value = $row['name'];
-      $result_table[] = "<p>{$row['label']}: {$result_values[$value]} {$row['suffix']}</p>";
+      if($result_values[$value]) $result_table[] = "<p>{$row['label']}: {$result_values[$value]} {$row['suffix']}</p>";
     }
     return $result_table;
   }

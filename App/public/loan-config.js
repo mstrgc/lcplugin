@@ -11,7 +11,8 @@ function send_request(){
   })
   .then(res => res.json())
   .then(data => {
-    console.log('Monthly payment:', data.deposit);
+    //console.log('Monthly payment:', data.deposit);
+    document.getElementById('loan-result').innerHTML = data;
   });
 }
 

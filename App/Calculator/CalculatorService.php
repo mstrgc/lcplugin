@@ -12,9 +12,10 @@ class CalculatorService{
   }
 
   public function calculator($data){
+    //init bank config set result table method
     $bank_name = '\Config\\' . ucfirst($this->bank);
     $bank_config = new $bank_name;
-    $result = $bank_config->calculate($data);
-    return $result;
+    $result_table = $bank_config->set_result_table($data);
+    return $result_table;
   }
 }
