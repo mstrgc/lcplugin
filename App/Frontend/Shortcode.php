@@ -16,10 +16,15 @@ class Shortcode{
       ['bank' => ''], $attrs
     );
 
+    //call bank config class
     $class = '\Config\\' . ucfirst($shortcode_attrs['bank']);
     $bank_config = new $class;
+
+    //call set form to get inputs
     $form = $bank_config->set_form();
     $this->enqueue_assets();
+
+    //render ui
     ob_start();
     echo '<form id="loan-form">';
     foreach($form as $row){
@@ -28,14 +33,6 @@ class Shortcode{
     }
     echo '</form>';
     return ob_get_clean();
-  }
-
-  public function bank_calc($request){
-    $data = $request->get_json_params();
-    $config = new \App\Calculator\CalculatorService('melli');
-    $result = $config->calculator($data);
-
-    return ['deposit' => $result];
   }
 
   public function enqueue_assets(){

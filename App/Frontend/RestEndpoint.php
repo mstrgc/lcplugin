@@ -16,15 +16,18 @@ class RestEndpoint{
         '/calculate',
         [
           'methods'  => 'POST',
-          'callback' => [$this, 'calc'],
+          'callback' => [$this, 'calculate'],
           'permission_callback' => '__return_true',
         ]
       );
     });
   }
 
-  public function calc($request){
-    $class = new Shortcode();
-    return $class->bank_calc($request);
+  public function calculate($request){
+    $data = $request->get_json_params();
+    $config = new \App\Calculator\CalculatorService($data['bank']);
+    $result = $config->calculator($data);
+
+    return ['deposit' => $result];
   }
 }

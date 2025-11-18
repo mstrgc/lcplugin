@@ -1,6 +1,9 @@
 function send_request(){
   const form = document.getElementById('loan-form');
   const form_data = new FormData(form);
+
+  form_data.append('bank', 'melli');
+
   fetch('/word/wp-json/loan-calculator/v1/calculate', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
