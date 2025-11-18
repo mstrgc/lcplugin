@@ -31,12 +31,11 @@ class Shortcode{
   }
 
   public function bank_calc($request){
-    $bank = new \Config\Melli;
     $data = $request->get_json_params();
-    $result = $bank->calculate($data);
-    return [
-      'price' => $result
-    ];
+    $config = new \App\Calculator\CalculatorService('melli');
+    $result = $config->calculator($data);
+
+    return ['deposit' => $result];
   }
 
   public function enqueue_assets(){

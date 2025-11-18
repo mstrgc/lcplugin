@@ -8,7 +8,7 @@ function send_request(){
   })
   .then(res => res.json())
   .then(data => {
-    console.log('Monthly payment:', data.price);
+    console.log('Monthly payment:', data.deposit);
   });
 }
 
