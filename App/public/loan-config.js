@@ -4,7 +4,7 @@ function send_request(){
 
   form_data.append('bank', lcp.bank);
 
-  fetch('/word/wp-json/loan-calculator/v1/calculate', {
+  fetch(lcp.rest_url, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(Object.fromEntries(form_data))
@@ -14,20 +14,5 @@ function send_request(){
     document.getElementById('loan-result').innerHTML = data;
   });
 }
-/*
-function get_form(){
-  fetch('/word/wp-json/loan-calculator/v1/get-form', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({'bank': lcp.bank})
-  })
-  .then(res => res.json())
-  .then(form => {
-    form.forEach(row => {
-      document.getElementById('loan-form').innerHTML += (row + '<br/>');
-    });
-  });
-}
 
-document.addEventListener('DOMContentLoaded', get_form);*/
 document.getElementById('loan-form').addEventListener('input', send_request);

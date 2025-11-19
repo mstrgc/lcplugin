@@ -26,8 +26,12 @@ class Shortcode{
       'body' => ['bank' => $this->attrs['bank']]
     ];
 
+    $url = rest_url('loan-calculator/v1/get-form/');;
+
+    error_log($url);
+
     //create rest api request
-    $resp = wp_remote_post(get_home_url() . '/wp-json/loan-calculator/v1/get-form/', $args);
+    $resp = wp_remote_post($url , $args);
 
     if(is_wp_error($resp)){
       error_log($resp->get_error_message());
@@ -49,6 +53,6 @@ class Shortcode{
 
   public function enqueue_assets(){
     wp_enqueue_script('loan-config', LCPLUGIN_URL . 'App/public/loan-config.js', ['jquery'], '', true);
-    wp_localize_script('loan-config', 'lcp', $this->attrs);
+    wp_localize_script('loan-config', 'lcp', ['bank' => $this->attrs['bank'], 'rest_url' => rest_url('loan-calculator/v1/calculate/')]);
   }
 }
