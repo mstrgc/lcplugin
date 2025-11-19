@@ -116,6 +116,17 @@ class Melli extends BankConfigBase{
     ];
   }
 
+  public function rules($attrs){
+
+    //add loan surpass in case loan price is more than 300M
+    if($attrs['loan_price'] > 300000000) {
+      $attrs['loan_surpass'] = $attrs['loan_price'] -300000000;
+      $attrs['loan_price'] = 300000000;
+    }
+
+    return $attrs;
+  }
+
   public function calculate(array $inputs): int {
     $factor = $this->calc_data[$inputs['fee']][$inputs['payment']][($inputs['deposit_duration'] - 1)];
     error_log($factor);
@@ -127,9 +138,10 @@ class Melli extends BankConfigBase{
     $result_table = [];
     $deposit = $this->calculate($result_values);
     $result_values['deposit'] = $deposit;
+    $valid_result = $this->rules($result_values);
     foreach($this->result_schema as $row){
       $value = $row['name'];
-      if($result_values[$value]) $result_table[] = "<p>{$row['label']}: {$result_values[$value]} {$row['suffix']}</p>";
+      if($valid_result[$value]) $result_table[] = "<p>{$row['label']}: {$valid_result[$value]} {$row['suffix']}</p>";
     }
     return $result_table;
   }

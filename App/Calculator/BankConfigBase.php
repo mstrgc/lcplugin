@@ -29,7 +29,7 @@ class BankConfigBase{
   }
 
   //set of rules and exceptions that might effect the calculation
-  public function rules(){
+  public function rules($attrs){
     return;
   }
 
@@ -65,6 +65,7 @@ class BankConfigBase{
     return [];
   }
 
+  //display each payment price
   public function set_payment_price(int $price, int $payment, mixed $fee = null){
     if(!is_null($fee)){
       $fee_price = ($price * $fee) /100;
