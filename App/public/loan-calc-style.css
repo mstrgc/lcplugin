@@ -1,9 +1,11 @@
-#lcp_container_wrapper{
+#lcp-container-wrapper{
     container-type: inline-size;
     container-name: lc_container;
+    margin: 0 !important;
+    width: 100% !important;
 }
 
-#lcp_container{
+#lcp-container{
     direction: rtl;
     width: 100%;
     display: flex;
@@ -17,18 +19,18 @@
     white-space: wrap;
 }
 
-#lcp_form{
+#lcp-form{
     width: 50%;
 }
 
-#lcp_form_inputs{
+#lcp-form{
     display: flex;
     flex-direction: column;
 }
 
 /*** result section ***/
 
-.lcp_results{
+.lcp-results{
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -55,7 +57,7 @@
 
 /*** range input attr ***/
 
-.input_label{
+.lcp-label-input{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -63,23 +65,23 @@
     text-align: right;
 }
 
-.input_label label{
+.lcp-label-input label{
     font-size: 26px;
     font-weight: bolder;
 }
 
-.input_label span{
+.lcp-label-input span{
     font-weight: bolder;
 }
 
-.form_range_input{
+.lcp-range-input{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin: 10px 0;
 }
 
-.form_range_input input{
+.lcp-range-input input{
     width: 100%;
     border-radius: 5px;
 }
@@ -146,13 +148,13 @@ hr{
 
 /*** range inputs ***/
 
-#lcp_form_inputs input[type='range']{
+#lcp-form input[type='range']{
     appearance: none;
     -webkit-appearance: none;
     padding: 10px 0;
 }
 
-#lcp_form_inputs input[type='range']::-webkit-slider-thumb{
+#lcp-form input[type='range']::-webkit-slider-thumb{
     -webkit-appearance: none;
     background-color: #2d5da7;
     border-radius: 50px;
@@ -162,16 +164,16 @@ hr{
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-#lcp_form_inputs input[type='range']:hover::-webkit-slider-thumb{
+#lcp-form input[type='range']:hover::-webkit-slider-thumb{
     box-shadow: 0 0 0 4px #2d5ea75c;
 }
 
-#lcp_form_inputs input[type='range']::-webkit-slider-runnable-track{
+#lcp-form input[type='range']::-webkit-slider-runnable-track{
     background: #ccc;
     height: 2px;
 }
 
-#lcp_form_inputs input[type='range']::-moz-range-thumb{
+#lcp-form input[type='range']::-moz-range-thumb{
     -moz-appearance: none;
     background-color: #2d5da7;
     border-radius: 50px;
@@ -181,28 +183,28 @@ hr{
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-#lcp_form_inputs input[type='range']::-moz-range-track{
+#lcp-form input[type='range']::-moz-range-track{
     background: #ccc;
     height: 2px;
 }
 
-#lcp_form_inputs input[type='range']:hover::-moz-range-thumb{
+#lcp-form input[type='range']:hover::-moz-range-thumb{
     box-shadow: 0 0 0 4px #2d5ea75c;
 }
 
-#lcp_form_inputs input[type='range']::-moz-range-progress{
+#lcp-form input[type='range']::-moz-range-progress{
     background: #2d5da7;
 }
 
-/*** responsive ***/
+/*** responsive ***
 
 @container lcp_container (max-width: 826px){
-    #lcp_container{
+    #lcp-container{
         padding: 10px;
         font-size: 16px;
     }
 
-    .lcp_results{
+    .lcp-results{
         margin-right: 20px;
     }
 
@@ -210,7 +212,7 @@ hr{
         font-size: 12px;
     }
 
-    .input_label label{
+    .lcp-label-input label{
         font-size: 20px;
     }
 
@@ -233,18 +235,18 @@ hr{
 }
 
 @container lcp_container (max-width: 500px){
-    #lcp_container{
+    #lcp-container{
         flex-direction: column;
         padding: 24px 16px;
     }
 
-    .lcp_results{
+    .lcp-results{
         width: 100%;
         margin-right: 0;
         margin-top: 30px;
     }
 
-    #lcp_form{
+    #lcp-form{
         width: 100%;
     }
 }

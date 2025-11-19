@@ -19,7 +19,8 @@ class Melli extends BankConfigBase{
         'label' => 'مبلغ',
         'min' => '1000000',
         'max' => '1000000000',
-        'step' => '1000000'
+        'step' => '1000000',
+        'suffix' => 'تومان'
       ],
       [
         'name' => 'payment',
@@ -27,7 +28,8 @@ class Melli extends BankConfigBase{
         'label' => 'اقساط',
         'min' => '6',
         'max' => '60',
-        'step' => '6'
+        'step' => '6',
+        'suffix' => 'ماه'
       ],
       [
         'name' => 'deposit_duration',
@@ -35,13 +37,15 @@ class Melli extends BankConfigBase{
         'label' => 'مدت سپرده',
         'min' => '1',
         'max' => '12',
-        'step' => '1'
+        'step' => '1',
+        'suffix' => 'ماه'
       ],
       [
         'name' => 'fee',
         'type' => 'select',
         'label' => 'کارمزد',
-        'options' => ['0', '2', '4']
+        'options' => ['0', '2', '4'],
+        'suffix' => 'درصد'
       ]
     ];
     $this->result_schema = [
@@ -144,5 +148,9 @@ class Melli extends BankConfigBase{
       if($valid_result[$value]) $result_table[] = "<p>{$row['label']}: {$valid_result[$value]} {$row['suffix']}</p>";
     }
     return $result_table;
+  }
+
+  public function set_form(): array{
+    return $this->input_schema;
   }
 }

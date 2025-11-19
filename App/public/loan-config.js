@@ -1,5 +1,5 @@
 function send_request(){
-  const form = document.getElementById('loan-form');
+  const form = document.getElementById('lcp-form');
   const form_data = new FormData(form);
 
   form_data.append('bank', lcp.bank);
@@ -15,4 +15,4 @@ function send_request(){
   });
 }
 
-document.getElementById('loan-form').addEventListener('change', send_request);
+document.getElementById('lcp-form').addEventListener('change', send_request);
