@@ -36,7 +36,7 @@
         }
       ?>
     </form>
-    <div id="loan-result" class="lcp-results">
+    <div id="lcp-result" class="lcp-results">
     </div>
   </div>
 </div>

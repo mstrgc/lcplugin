@@ -11,7 +11,9 @@ function send_request(){
   })
   .then(res => res.json())
   .then(data => {
-    document.getElementById('loan-result').innerHTML = data;
+    data.forEach(row => {
+      document.getElementById('lcp-result').innerHTML += "<p>" + row['label'] + ": " + row['value'] + row['suffix'] + "</p>";
+    });
   });
 }
 
