@@ -2,7 +2,7 @@ function send_request(){
   const form = document.getElementById('loan-form');
   const form_data = new FormData(form);
 
-  form_data.append('bank', 'melli');
+  form_data.append('bank', lcp.bank);
 
   fetch('/word/wp-json/loan-calculator/v1/calculate', {
     method: 'POST',
@@ -19,12 +19,12 @@ function get_form(){
   fetch('/word/wp-json/loan-calculator/v1/get-form', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({'bank': 'melli'})
+    body: JSON.stringify({'bank': lcp.bank})
   })
   .then(res => res.json())
   .then(form => {
     form.forEach(row => {
-      document.getElementById('loan-result').innerHTML += row;
+      document.getElementById('loan-form').innerHTML += (row + '<br/>');
     });
   });
 }
