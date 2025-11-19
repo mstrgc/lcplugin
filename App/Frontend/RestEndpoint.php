@@ -21,12 +21,33 @@ class RestEndpoint{
         ]
       );
     });
+
+    add_action('rest_api_init', function () {
+      register_rest_route(
+        'loan-calculator/v1',
+        '/get-form',
+        [
+          'methods'  => 'POST',
+          'callback' => [$this, 'get_form'],
+          'permission_callback' => '__return_true',
+        ]
+      );
+    });
   }
 
   public function calculate($request){
     $data = $request->get_json_params();
     $config = new \App\Calculator\CalculatorService($data['bank']);
     $result = $config->calculator($data);
+
+    return $result;
+  }
+
+  public function get_form($request){
+    $data = $request->get_param('bank');
+    $config_name = '\Config\\' . ucfirst($data);
+    $config = new $config_name;
+    $result = $config->set_form();
 
     return $result;
   }

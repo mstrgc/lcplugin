@@ -9,6 +9,7 @@ if(!defined('ABSPATH')) {
 class Shortcode{
   public function __construct(){
     add_shortcode('loan_calculator', [$this,'render_shortcode']);
+    add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
   }
 
   public function render_shortcode($attrs){
@@ -22,7 +23,6 @@ class Shortcode{
 
     //call set form to get inputs
     $form = $bank_config->set_form();
-    $this->enqueue_assets();
 
     //render ui
     ob_start();
