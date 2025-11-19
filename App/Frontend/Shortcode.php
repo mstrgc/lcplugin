@@ -18,10 +18,20 @@ class Shortcode{
     $this->attrs = shortcode_atts(
       ['bank' => ''], $attrs
     );
+    $this->render_ui();
+  }
 
+  public function render_ui(){
+    $resp = wp_remote_post(get_home_url() . 'wp-json/loan-calculator/v1/get-form/', ['bank' => $this->attrs['bank']]);
+    if(is_wp_error($resp)){
+      echo $resp->get_error_message();
+    }
     //render ui
     ob_start();
     echo '<form id="loan-form"></form>';
+    foreach($resp as $row){
+      echo $row;
+    }
     echo '<div id="loan-result"></div>';
     return ob_get_clean();
   }

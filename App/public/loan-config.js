@@ -29,5 +29,5 @@ function get_form(){
   });
 }
 
-document.addEventListener('DOMContentLoaded', get_form);
+//document.addEventListener('DOMContentLoaded', get_form);
 document.getElementById('loan-form').addEventListener('change', send_request);
