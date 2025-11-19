@@ -43,11 +43,7 @@ class Shortcode{
 
     //render ui
     ob_start();
-    echo '<form id="loan-form">';
-    foreach($form as $input){
-      echo $input;
-    }
-    echo '</form><div id="loan-result"></div>';
+    require_once LCPLUGIN_APP . 'Views/loanCalculatorView.php';
     return ob_get_clean();
   }
 

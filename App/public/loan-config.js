@@ -15,4 +15,4 @@ function send_request(){
   });
 }
 
-document.getElementById('loan-form').addEventListener('input', send_request);
+document.getElementById('loan-form').addEventListener('change', send_request);
