@@ -7,5 +7,4 @@
   ?>
 </form>
 <div id="loan-result">
-
 </div>
