@@ -14,7 +14,7 @@ function send_request(){
     document.getElementById('loan-result').innerHTML = data;
   });
 }
-
+/*
 function get_form(){
   fetch('/word/wp-json/loan-calculator/v1/get-form', {
     method: 'POST',
@@ -29,5 +29,5 @@ function get_form(){
   });
 }
 
-//document.addEventListener('DOMContentLoaded', get_form);
-document.getElementById('loan-form').addEventListener('change', send_request);
+document.addEventListener('DOMContentLoaded', get_form);*/
+document.getElementById('loan-form').addEventListener('input', send_request);

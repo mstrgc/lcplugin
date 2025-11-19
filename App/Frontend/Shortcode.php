@@ -18,21 +18,32 @@ class Shortcode{
     $this->attrs = shortcode_atts(
       ['bank' => ''], $attrs
     );
-    $this->render_ui();
+    return $this->render_ui();
   }
 
   public function render_ui(){
-    $resp = wp_remote_post(get_home_url() . 'wp-json/loan-calculator/v1/get-form/', ['bank' => $this->attrs['bank']]);
+    $args = [
+      'body' => ['bank' => $this->attrs['bank']]
+    ];
+
+    //create rest api request
+    $resp = wp_remote_post(get_home_url() . '/wp-json/loan-calculator/v1/get-form/', $args);
+
     if(is_wp_error($resp)){
-      echo $resp->get_error_message();
+      error_log($resp->get_error_message());
     }
+
+    $body = wp_remote_retrieve_body($resp);
+
+    $form = json_decode( $body, true );
+
     //render ui
     ob_start();
-    echo '<form id="loan-form"></form>';
-    foreach($resp as $row){
-      echo $row;
+    echo '<form id="loan-form">';
+    foreach($form as $input){
+      echo $input;
     }
-    echo '<div id="loan-result"></div>';
+    echo '</form><div id="loan-result"></div>';
     return ob_get_clean();
   }
 
