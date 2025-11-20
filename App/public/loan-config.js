@@ -18,4 +18,5 @@ function send_request(){
   });
 }
 
+document.addEventListener('DOMContentLoaded', send_request);
 document.getElementById('lcp-form').addEventListener('change', send_request);
