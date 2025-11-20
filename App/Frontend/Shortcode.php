@@ -28,8 +28,6 @@ class Shortcode{
 
     $url = rest_url('loan-calculator/v1/get-form/');;
 
-    error_log($url);
-
     //create rest api request
     $resp = wp_remote_post($url , $args);
 

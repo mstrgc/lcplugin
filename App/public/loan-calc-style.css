@@ -1,13 +1,10 @@
 #lcp-container-wrapper{
     container-type: inline-size;
     container-name: lc_container;
-    margin: 0 !important;
-    width: 100% !important;
 }
 
 #lcp-container{
     direction: rtl;
-    width: 100%;
     display: flex;
     flex-direction: row;
     margin: 0 auto;
@@ -17,6 +14,7 @@
     border: 1px solid #74797f;
     border-radius: 40px;
     white-space: wrap;
+    max-width: 100%;
 }
 
 #lcp-form{
@@ -30,7 +28,7 @@
 
 /*** result section ***/
 
-.lcp-results{
+.lcp-result{
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -196,7 +194,7 @@ hr{
     background: #2d5da7;
 }
 
-/*** responsive ***
+/*** responsive ***/
 
 @container lcp_container (max-width: 826px){
     #lcp-container{
@@ -204,7 +202,7 @@ hr{
         font-size: 16px;
     }
 
-    .lcp-results{
+    .lcp-result{
         margin-right: 20px;
     }
 
@@ -240,7 +238,7 @@ hr{
         padding: 24px 16px;
     }
 
-    .lcp-results{
+    .lcp-result{
         width: 100%;
         margin-right: 0;
         margin-top: 30px;

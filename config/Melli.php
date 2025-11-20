@@ -133,7 +133,6 @@ class Melli extends BankConfigBase{
 
   public function calculate(array $inputs): int {
     $factor = $this->calc_data[$inputs['fee']][$inputs['payment']][($inputs['deposit_duration'] - 1)];
-    error_log($factor);
     $average = ($inputs['loan_price'] / $factor) * 100;
     return intval($average);
   }
@@ -145,7 +144,10 @@ class Melli extends BankConfigBase{
     $valid_result = $this->rules($result_values);
     foreach($this->result_schema as $row){
       $value = $row['name'];
-      if($valid_result[$value]) $result_table[] = $row;
+      if($valid_result[$value]){
+        $row['value'] = $valid_result[$value];
+        $result_table[] = $row;
+      }
     }
     return $result_table;
   }
