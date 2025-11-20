@@ -144,7 +144,7 @@ class Melli extends BankConfigBase{
     $valid_result = $this->rules($result_values);
     foreach($this->result_schema as $row){
       $value = $row['name'];
-      if($valid_result[$value]){
+      if(key_exists($value, $valid_result)){
         $row['value'] = $valid_result[$value];
         $result_table[] = $row;
       }

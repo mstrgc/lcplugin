@@ -13,7 +13,7 @@ function send_request(){
   .then(data => {
     document.getElementById('lcp-result').innerHTML = '';
     data.forEach(row => {
-      document.getElementById('lcp-result').innerHTML += "<p>" + row['label'] + ": " + row['value'] + row['suffix'] + "</p>";
+      document.getElementById('lcp-result').innerHTML += "<div class='result_row'><p>" + row['label'] + "</p><p><span id='" + row['name'] + "_result'>" + row['value'] + "</span> " + row['suffix'] + "</p></div><hr></hr>";
     });
   });
 }
