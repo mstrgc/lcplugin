@@ -110,21 +110,28 @@
     border-radius: 32px;
 }
 
-.lcp_calc_type{
+.lcp_calc_type>label{
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.lcp-options{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.lcp_calc_type input{
+.lcp-options input{
     display: none;
 }
 
-.lcp_calc_type label{
+.lcp-options label{
     background-color: #f5faff;
     border-radius: 16px;
     cursor: pointer;
     margin: 0 5px;
+    padding: 10px;
+    width: 100%;
 }
 
 .lcp_calc_type label:has(input:checked){
