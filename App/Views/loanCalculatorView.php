@@ -28,9 +28,11 @@
               $name = $input['name'];
               $label = $input['label'];
               $options = $input['options'];
+              echo '<div class="lcp_calc_type">';
               foreach($options as $option){
                 echo "<label for='{$name}_{$option}'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}'>{$option}%</label>";
               }
+              echo '</div>';
               break;
           }
         }
