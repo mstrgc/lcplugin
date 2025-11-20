@@ -100,7 +100,7 @@
 
 /*** radio input ***/
 
-.lcp_calc_type{
+.lcp-options-container{
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
@@ -110,7 +110,7 @@
     border-radius: 32px;
 }
 
-.lcp_calc_type>label{
+.lcp-options-container>label{
     margin-bottom: 10px;
     font-size: 26px;
 }
@@ -134,7 +134,7 @@
     width: 100%;
 }
 
-.lcp_calc_type label:has(input:checked){
+.lcp-options-container label:has(input:checked){
     border: 1px solid #2d5da7;
 }
 
