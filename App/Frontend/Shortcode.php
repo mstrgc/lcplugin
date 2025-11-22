@@ -41,7 +41,7 @@ class Shortcode{
 
     //define ui elements
     $form = $calculator['form'];
-    $resulat_table = $calculator['resulat_table'];
+    $result_table = $calculator['result_table'];
 
     //render ui
     ob_start();

@@ -31,7 +31,11 @@
               echo "<div class='lcp-options-container'><label>{$label}</label>";
               echo "<div class='lcp-options'>";
               foreach($options as $option){
-                echo "<label for='{$name}_{$option}'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}'>{$option}%</label>";
+                if($option === $options[0]){
+                  echo "<label for='{$name}_{$option}'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}' checked>{$option}%</label>";
+                } else {
+                  echo "<label for='{$name}_{$option}'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}'>{$option}%</label>";
+                }
               }
               echo '</div></div>';
               break;
@@ -40,6 +44,21 @@
       ?>
     </form>
     <div id="lcp-result" class="lcp-result">
+      <?php
+        foreach($result_table as $row){
+          $name = $row['name'];
+          $label = $row['label'];
+          $suffix = $row['suffix'];
+          echo "
+          <div class='lcp-result-row'>
+            <p>{$label}</p>
+            <p>
+              <span id='{$name}_result'></span>
+            {$suffix}</p>
+          </div>
+          <hr></hr>";
+        }
+      ?>
     </div>
   </div>
 </div>
