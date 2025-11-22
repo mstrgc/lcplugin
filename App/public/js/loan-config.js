@@ -17,6 +17,7 @@ function send_request(){
   });
 }
 
+//convert form numbers to persian
 function convert_numbers(){
   numbers = document.getElementById('lcp-form').querySelectorAll('.input-number-label');
   numbers.forEach(num => {
@@ -24,14 +25,18 @@ function convert_numbers(){
   });
 }
 
+//display input range value in input label
 function display_range(){
-    const ranges = document.getElementById('lcp-form').querySelectorAll('input[type="range"]');
-    ranges.forEach(range => {
-        document.getElementById(range.name + '-index').textContent = (range.value).to_price();
-    })
+  const ranges = document.getElementById('lcp-form').querySelectorAll('input[type="range"]');
+  ranges.forEach(range => {
+      document.getElementById(range.name + '-index').textContent = (range.value).to_price();
+  })
 }
 
-document.addEventListener('DOMContentLoaded', send_request);
-document.addEventListener('DOMContentLoaded', convert_numbers);
+document.addEventListener('DOMContentLoaded', () => {
+  send_request();
+  convert_numbers();
+  display_range();
+});
 document.getElementById('lcp-form').addEventListener('change', send_request);
 document.getElementById('lcp-form').addEventListener('input', display_range);
