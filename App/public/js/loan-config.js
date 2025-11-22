@@ -18,9 +18,8 @@ function send_request(){
 }
 
 function convert_numbers(){
-  numbers = document.getElementById('lcp-form').querySelectorAll('span');
+  numbers = document.getElementById('lcp-form').querySelectorAll('.input-number-label');
   numbers.forEach(num => {
-    console.log(num);
     num.textContent = num.textContent.to_price();
   });
 }
@@ -35,3 +34,4 @@ function display_range(){
 document.addEventListener('DOMContentLoaded', send_request);
 document.addEventListener('DOMContentLoaded', convert_numbers);
 document.getElementById('lcp-form').addEventListener('change', send_request);
+document.getElementById('lcp-form').addEventListener('input', display_range);
