@@ -23,9 +23,9 @@ class BankConfigBase{
   public $calc_data = null;
 
   //calculate the deposit amount
-  public function calculate(array $inputs): mixed{
+  public function calculate(array $inputs){
     //recieve submitted form inputs($inputs) and calculate deposit by each bank formula
-    return 0;
+    return;
   }
 
   //set of rules and exceptions that might effect the calculation

@@ -15,7 +15,7 @@
               "<div class='lcp-range-input'>
                 <div class='lcp-label-input'>
                   <label for='{$name}'>{$label}</label>
-                  <p class='display_range'><span id='{$name}_index'>۱,۰۰۰,۰۰۰</span> {$suffix}</p>
+                  <p class='display_range'><span id='{$name}_index'></span> {$suffix}</p>
                 </div>
                 <input name='{$name}' id='{$name}' type='range' min='{$min}' max='{$max}' step='{$step}' value='{$min}'>
                 <div class='range_span'>
