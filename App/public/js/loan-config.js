@@ -12,7 +12,7 @@ function send_request(){
   .then(res => res.json())
   .then(data => {
     data.forEach(row => {
-      document.getElementById(row['name'] + '-result').textContent = (row['value']).to_persian();
+      document.getElementById(row['name'] + '-result').textContent = (row['value']).to_price();
     });
   });
 }

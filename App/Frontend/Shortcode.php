@@ -60,8 +60,8 @@ class Shortcode{
 
   public function enqueue_assets(){
     wp_enqueue_style('loan-calc-style',LCPLUGIN_URL . 'App/public/css/loan-calc-style.css');
+    wp_enqueue_script('lcp-prototype', LCPLUGIN_URL . 'App/public/js/prototype.js', [], '', true);
     wp_enqueue_script('loan-config', LCPLUGIN_URL . 'App/public/js/loan-config.js', ['jquery'], '', true);
-    wp_enqueue_script('prototype', LCPLUGIN_URL . 'App/public/js/prototype.js', [], '', true);
     wp_localize_script('loan-config', 'lcp', ['bank' => $this->attrs['bank'], 'rest_url' => rest_url('loan-calculator/v1/calculate/')]);
   }
 }
