@@ -11,8 +11,11 @@ if(!defined('ABSPATH')) {
 
 class Plugin{
   public function __construct(){
-    add_shortcode('loan-calculator', [Shortcode::get_instance(), 'render_shortcode']);
+    $shortcode = Shortcode::get_instance();
+    add_shortcode('loan-calculator', [$shortcode, 'render_shortcode']);
     $rest_api = new RestEndpoint();
     $rest_api->register();
   }
 }
+
+add_action('plugins_loaded', fn() => new Plugin());

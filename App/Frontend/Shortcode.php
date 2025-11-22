@@ -9,16 +9,14 @@ if(!defined('ABSPATH')) {
 class Shortcode{
 
   protected $attrs = [];
-  public static $instance;
+  public static $instance = null;
 
   public function __construct(){
-    //add_shortcode('loan_calculator', [$this,'render_shortcode']);
-    add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
   }
 
   public static function get_instance() {
-    if(!isset(self::$instance)){
-      self::$instance = new Shortcode();
+    if(is_null(self::$instance)){
+      self::$instance = new self();
     }
     return self::$instance;
   }
@@ -51,6 +49,8 @@ class Shortcode{
     //define ui elements
     $form = $calculator['form'];
     $result_table = $calculator['result_table'];
+
+    $this->enqueue_assets();
 
     //render ui
     ob_start();
