@@ -36,6 +36,15 @@ class RestEndpoint{
   }
 
   public function calculate($request){
+    $nonce = $request['loan_calculator_nonce_field'];
+
+    if(isset($nonce)){
+      error_log($nonce);
+    }
+
+    if(!wp_verify_nonce($nonce, 'loan_calculator_nonce')) {
+      return error_log('fail');
+    }
     $data = $request->get_json_params();
     $config = new \App\Calculator\CalculatorService($data['bank']);
     $result = $config->calculator($data);

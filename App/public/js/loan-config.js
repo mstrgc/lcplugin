@@ -6,7 +6,7 @@ function send_request(){
 
   fetch(lcp.rest_url, {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: {'Content-Type': 'application/json', 'X-WP-Nonce': lcp.nonce},
     body: JSON.stringify(Object.fromEntries(form_data))
   })
   .then(res => res.json())

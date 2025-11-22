@@ -2,6 +2,8 @@
   <div id="lcp-container">
     <form id="lcp-form">
       <?php
+        //wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field');
+        echo wp_create_nonce('lcp_nonce');
         foreach($form as $input){
           switch($input['type']){
             case 'range':
