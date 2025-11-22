@@ -25,6 +25,13 @@ function convert_numbers(){
   });
 }
 
+function display_range(){
+    const ranges = document.getElementById('lcp-form').querySelectorAll('input[type="range"]');
+    ranges.forEach(range => {
+        document.getElementById(range.name + '-index').textContent = (range.value).to_price();
+    })
+}
+
 document.addEventListener('DOMContentLoaded', send_request);
 document.addEventListener('DOMContentLoaded', convert_numbers);
 document.getElementById('lcp-form').addEventListener('change', send_request);
