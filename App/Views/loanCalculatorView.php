@@ -53,7 +53,7 @@
           <div class='lcp-result-row'>
             <p>{$label}</p>
             <p>
-              <span id='{$name}_result'></span>
+              <span id='{$name}-result'></span>
             {$suffix}</p>
           </div>
           <hr></hr>";
