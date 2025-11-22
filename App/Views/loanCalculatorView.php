@@ -15,10 +15,10 @@
               "<div class='lcp-range-input'>
                 <div class='lcp-label-input'>
                   <label for='{$name}'>{$label}</label>
-                  <p class='display_range'><span id='{$name}-index'>{$min}</span> {$suffix}</p>
+                  <p class='display-range'><span id='{$name}-index'>{$min}</span> {$suffix}</p>
                 </div>
                 <input name='{$name}' id='{$name}' type='range' min='{$min}' max='{$max}' step='{$step}' value='{$min}'>
-                <div class='range_span'>
+                <div class='range-span'>
                   <p><span class='input-number-label'>{$min}</span><span> {$suffix}</span></p>
                   <p><span class='input-number-label'>{$max}</span><span> {$suffix}</span></p>
                 </div>
@@ -33,9 +33,9 @@
               echo "<div class='lcp-options'>";
               foreach($options as $option){
                 if($option === $options[0]){
-                  echo "<label for='{$name}_{$option}' class='input-number-label'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}' checked>{$option} {$suffix}</label>";
+                  echo "<label for='{$name}_{$option}'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}' checked><span  class='input-number-label'>{$option}</span> {$suffix}</label>";
                 } else{
-                  echo "<label for='{$name}_{$option}' class='input-number-label'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}'>{$option} {$suffix}</label>";
+                  echo "<label for='{$name}_{$option}'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}'><span  class='input-number-label'>{$option}</span> {$suffix}</label>";
                 }
               }
               echo '</div></div>';

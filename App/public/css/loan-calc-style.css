@@ -88,12 +88,12 @@
     color: red;
 }
 
-.range_span{
+.range-span{
     display: flex;
     justify-content: space-between;
 }
 
-.range_span span{
+.range-span span{
     color: #44474e;
     font-size: 16px;
 }
@@ -138,13 +138,13 @@
     border: 1px solid #2d5da7;
 }
 
-.display_range{
+.display-range{
     color: #2d5da7;
     white-space: nowrap;
     font-size: 16px;
 }
 
-.display_range span{
+.display-range span{
     font-size: 20px;
 }
 
@@ -228,15 +228,15 @@ hr{
         font-weight: bolder;
     }
 
-    .range_span span{
+    .range-span span{
         font-size: 10px;
     }
 
-    .display_range{
+    .display-range{
         font-size: 12px;
     }
 
-    .display_range span{
+    .display-range span{
         font-size: 16px;
     }
 }
