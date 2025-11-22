@@ -11,7 +11,7 @@ if(!defined('ABSPATH')) {
 
 class Plugin{
   public function __construct(){
-    new Shortcode();
+    add_shortcode('loan-calculator', )
     $rest_api = new RestEndpoint();
     $rest_api->register();
   }
