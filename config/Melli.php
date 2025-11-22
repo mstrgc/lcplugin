@@ -62,7 +62,7 @@ class Melli extends BankConfigBase{
       [
         'name' => 'loan_surpass',
         'label' => 'مازاد تسهیلات',
-        'suffix' => 'تومان'
+        'suffix' => 'تومان',
       ],
       [
         'name' => 'fee',
@@ -121,9 +121,10 @@ class Melli extends BankConfigBase{
   }
 
   public function rules($attrs){
+    $attrs['loan_surpass'] = 0;
     //add loan surpass in case loan price is more than 300M
     if($attrs['loan_price'] > 300000000) {
-      $attrs['loan_surpass'] = $attrs['loan_price'] -300000000;
+      $attrs['loan_surpass'] = $attrs['loan_price'] - 300000000;
       $attrs['loan_price'] = 300000000;
     }
 

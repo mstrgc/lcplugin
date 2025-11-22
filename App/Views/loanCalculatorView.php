@@ -50,14 +50,15 @@
           $name = $row['name'];
           $label = $row['label'];
           $suffix = $row['suffix'];
+          //echo count($result_table);
           echo "
           <div class='lcp-result-row'>
             <p>{$label}</p>
             <p>
-              <span id='{$name}-result'></span>
+              <span id='{$name}-result'>۰</span>
             {$suffix}</p>
           </div>";
-          if($row != $result_table[(count($result_table) -1)]) echo "<hr></hr>";
+          if($row != $result_table[(count($result_table) - 1)]) echo "<hr></hr>";
         }
       ?>
     </div>
