@@ -12,7 +12,7 @@ class Shortcode{
   public static $instance;
 
   public function __construct(){
-    add_shortcode('loan_calculator', [$this,'render_shortcode']);
+    //add_shortcode('loan_calculator', [$this,'render_shortcode']);
     add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
   }
 

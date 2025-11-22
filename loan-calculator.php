@@ -16,6 +16,4 @@ define('LCPLUGIN_CONFIG', LCPLUGIN_PATH . 'config/');
 define('LCPLUGIN_URL', plugin_dir_url(__FILE__ ));
 
 
-use App\Core\Plugin;
-
-add_action('plugins_loaded');
+require_once LCPLUGIN_APP . 'Core/Plugin.php';
