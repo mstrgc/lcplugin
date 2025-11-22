@@ -56,8 +56,8 @@
             <p>
               <span id='{$name}-result'></span>
             {$suffix}</p>
-          </div>
-          <hr></hr>";
+          </div>";
+          if($row != $result_table[(count($result_table) -1)]) echo "<hr></hr>";
         }
       ?>
     </div>
