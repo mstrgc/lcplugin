@@ -6,6 +6,7 @@ if(!defined('ABSPATH')) {
 	exit;
 }
 
+#[\AllowDynamicProperties]
 class CalculatorService{
   public function __construct($bank){
     $this->bank = $bank;
