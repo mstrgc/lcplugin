@@ -150,8 +150,4 @@ class Melli extends BankConfigBase{
     }
     return $result_table;
   }
-
-  public function set_form(): array{
-    return ['form' => $this->input_schema, 'result_table' => $this->result_schema];
-  }
 }

@@ -33,33 +33,6 @@ class BankConfigBase{
     return;
   }
 
-  //create and return the calculator form inputs
-  public function set_form(): array{
-    $form = [];
-    $inputs = $this-> input_schema;
-    foreach($inputs as $input){
-      switch($input['type']){
-        case 'range':
-          $name = $input['name'];
-          $label = $input['label'];
-          $min = $input['min'];
-          $max = $input['max'];
-          $step = $input['step'];
-          $form[] = "<label for='{$name}'>{$label}</label><input name='{$name}' id='{$name}' type='range' min='{$min}' max='{$max}' step='{$step}'>";
-          break;
-        case 'select':
-          $name = $input['name'];
-          $label = $input['label'];
-          $options = $input['options'];
-          foreach($options as $option){
-            $form[] = "<label for='{$name}_{$option}'><input name='{$name}' id='{$name}_{$option}' type='radio' value='{$option}'>{$option}%</label>";
-          }
-          break;
-      }
-    }
-    return $form;
-  }
-
   //create and return a table of result labels
   public function set_result_table($result_values): array{
     return [];
@@ -74,5 +47,10 @@ class BankConfigBase{
       $payment_price = ($price / $payment);
     }
     return intval($payment_price);
+  }
+
+  //returns form inputs and result table rows to api
+  public function set_form(): array{
+    return ['form' => $this->input_schema, 'result_table' => $this->result_schema];
   }
 }
