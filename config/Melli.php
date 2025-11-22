@@ -121,7 +121,6 @@ class Melli extends BankConfigBase{
   }
 
   public function rules($attrs){
-
     //add loan surpass in case loan price is more than 300M
     if($attrs['loan_price'] > 300000000) {
       $attrs['loan_surpass'] = $attrs['loan_price'] -300000000;
@@ -153,6 +152,6 @@ class Melli extends BankConfigBase{
   }
 
   public function set_form(): array{
-    return $this->input_schema;
+    return ['form' => $this->input_schema, 'result_table' => $this->result_schema];
   }
 }

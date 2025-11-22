@@ -37,7 +37,11 @@ class Shortcode{
 
     $body = wp_remote_retrieve_body($resp);
 
-    $form = json_decode( $body, true );
+    $calculator = json_decode( $body, true );
+
+    //define ui elements
+    $form = $calculator['form'];
+    $resulat_table = $calculator['resulat_table'];
 
     //render ui
     ob_start();
