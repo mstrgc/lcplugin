@@ -1,6 +1,6 @@
 #lcp-container-wrapper{
     container-type: inline-size;
-    container-name: lc_container;
+    container-name: lcp_container;
 }
 
 #lcp-container{
@@ -91,6 +91,10 @@
 .range-span{
     display: flex;
     justify-content: space-between;
+}
+
+.range-span p{
+    margin: 0;
 }
 
 .range-span span{
