@@ -8,17 +8,18 @@ if(!defined('ABSPATH')) {
 
 use App\Calculator\BankConfigBase;
 
-class Mehr extends BaseConfig{
+class Mehr extends BankConfigBase{
   public function __construct(){
     $this->bank_name = 'mehr';
     $this->input_schema = [
       [
-        'name' => 'price',
+        'name' => 'loan_price',
         'type' => 'range',
-        'label' => 'مبلغ',
+        'label' => 'مبلغ تسهیلات',
         'min' => '20000000',
         'max' => '4000000000',
-        'step' => '1000000'
+        'step' => '1000000',
+        'suffix' => 'تومان'
       ],
       [
         'name' => 'payment',
@@ -26,7 +27,8 @@ class Mehr extends BaseConfig{
         'label' => 'اقساط',
         'min' => '24',
         'max' => '60',
-        'step' => '2'
+        'step' => '2',
+        'suffix' => 'ماه'
       ],
       [
         'name' => 'deposit_duration',
@@ -34,21 +36,42 @@ class Mehr extends BaseConfig{
         'label' => 'مدت سپرده',
         'min' => '1',
         'max' => '12',
-        'step' => '1'
+        'step' => '1',
+        'suffix' => 'ماه'
       ],
       [
         'name' => 'fee',
         'type' => 'select',
         'label' => 'کارمزد',
-        'options' => ['0', '1', '2', '3', '4']
+        'options' => ['0', '1', '2', '3', '4'],
+        'suffix' => 'درصد'
       ]
     ];
     $this->result_schema = [
       [
+        'name' => 'deposit',
+        'label' => 'میانگین حساب',
+        'suffix' => 'تومان'
+      ],
+      [
+        'name' => 'loan_price',
+        'label' => 'تسهیلات درخواستی',
+        'suffix' => 'تومان'
+      ],
+      [
+        'name' => 'fee',
+        'label' => 'کارمزد تسهیلات',
+        'suffix' => 'درصد'
+      ],
+      [
+        'name' => 'payment',
+        'label' => 'تعداد اقساط',
+        'suffix' => 'ماه'
+      ],
+      [
         'name' => 'deposit_duration',
-        'label' => 'مدت نگهداشت سپرده',
-        'suffix' => 'ریال',
-        'list' => ['۱ ماه', '۲ ماه', '۳ ماه', '۴ ماه', '۵ ماه', '۶ ماه', '۷ ماه', '۸ ماه', '۹ ماه', '۱۰ ماه', '۱۱ ماه', '۱۲ ماه']
+        'label' => 'مدت زمان واریز به حساب',
+        'suffix' => 'ماه'
       ]
     ];
     $this->input_schema = [

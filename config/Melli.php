@@ -16,7 +16,7 @@ class Melli extends BankConfigBase{
       [
         'name' => 'loan_price',
         'type' => 'range',
-        'label' => 'مبلغ',
+        'label' => 'مبلغ تسهیلات',
         'min' => '1000000',
         'max' => '1000000000',
         'step' => '1000000',
