@@ -141,15 +141,10 @@ class Mehr extends BankConfigBase{
     ];
   }
 
-  public function calculate(array $inputs): array{
-    $data = $this->calc_data;
-    $factors = $data[$inputs['fee']][$inputs['payment']];
-    $result = [];
-    foreach($factors as $factor){
-        $deposit = ($inputs['price'] / $factor) * 100;
-        $result[] = intval($deposit / 1000000) * 1000000;
-    }
-    return $result;
+  public function calculate(array $inputs): int{
+    $factor = $this->calc_data[$inputs['fee']][$inputs['payment']][($inputs['deposit_duration'] - 1)];
+    $average = ($inputs['loan_price'] / $factor) * 100;
+    return intval($average);
   }
 
   public function set_result_table($result_values): array{
