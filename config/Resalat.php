@@ -27,7 +27,8 @@ class Resalat extends BankConfigBase{
         'label' => 'اقساط',
         'min' => '6',
         'max' => '60',
-        'step' => '6'
+        'step' => '6',
+        'suffix' => 'ماه'
       ],
       [
         'name' => 'deposit_duration',
@@ -35,7 +36,8 @@ class Resalat extends BankConfigBase{
         'label' => 'مدت سپرده',
         'min' => '1',
         'max' => '12',
-        'step' => '1'
+        'step' => '1',
+        'suffix' => 'ماه'
       ]
     ];
     $this->result_schema = [
@@ -45,7 +47,7 @@ class Resalat extends BankConfigBase{
         'suffix' => 'تومان'
       ],
       [
-        'name' => 'loan',
+        'name' => 'loan_price',
         'label' => 'تسهیلات درخواستی',
         'suffix' => 'تومان'
       ],
@@ -63,15 +65,20 @@ class Resalat extends BankConfigBase{
   }
 
   public function calculate(array $inputs): int{
-    $result = ($inputs['price'] * $inputs['payment']) / ($inputs['deposit_duration'] * 2);
+    $result = ($inputs['loan_price'] * $inputs['payment']) / ($inputs['deposit_duration'] * 2);
     return intval($result);
   }
 
   public function set_result_table($result_values): array{
     $result_table = [];
+    $deposit = $this->calculate($result_values);
+    $result_values['deposit'] = $deposit;
     foreach($this->result_schema as $row){
       $value = $row['name'];
-      $result_table[] = "<p>{$row['label']}: {$result_values[$value]} {$row['suffix']}</p>";
+      if(key_exists($value, $result_values)){
+        $row['value'] = $result_values[$value];
+        $result_table[] = $row;
+      }
     }
     return $result_table;
   }
