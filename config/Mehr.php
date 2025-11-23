@@ -141,6 +141,12 @@ class Mehr extends BankConfigBase{
     ];
   }
 
+  public function rules($attrs){
+    //notice: 0, 1 and 2, 3 fee factors are equal
+    $attrs['fee'] = $attrs['fee'] % 2 != 0 ? $attrs['fee'] -= 1 : $attrs['fee'];
+    return $attrs;
+  }
+
   public function calculate(array $inputs): int{
     $factor = $this->calc_data[$inputs['fee']][$inputs['payment']][($inputs['deposit_duration'] - 1)];
     $average = ($inputs['loan_price'] / $factor) * 100;
@@ -149,9 +155,9 @@ class Mehr extends BankConfigBase{
 
   public function set_result_table($result_values): array{
     $result_table = [];
-    //notice: 0, 1 and 2, 3 fee factors are equal
-    $result_values['fee'] = $result_values['fee'] % 2 != 0 ? $result_values['fee'] -= 1 : $result_values['fee'];
-    $deposit = $this->calculate($result_values);
+    //rules will effect fee percentage for calculation but won't effect what will be shown to user
+    $valid_results = $this->rules($result_values);
+    $deposit = $this->calculate($valid_results);
     $result_values['deposit'] = $deposit;
     foreach($this->result_schema as $row){
       $value = $row['name'];
