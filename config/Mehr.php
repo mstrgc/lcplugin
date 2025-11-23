@@ -149,9 +149,14 @@ class Mehr extends BankConfigBase{
 
   public function set_result_table($result_values): array{
     $result_table = [];
-    $labels = $this->result_schema['list'];
-    for($i = 0; $i < 12; $i++){
-      $result_table[] = "<p>{$labels[$i]}: $result_values[$i] ریال</p>";
+    $deposit = $this->calculate($result_values);
+    $result_values['deposit'] = $deposit;
+    foreach($this->result_schema as $row){
+      $value = $row['name'];
+      if(key_exists($value, $result_values)){
+        $row['value'] = $result_values[$value];
+        $result_table[] = $row;
+      }
     }
     return $result_table;
   }
