@@ -19,7 +19,7 @@ class Mehr extends BankConfigBase{
         'min' => '20000000',
         'max' => '4000000000',
         'step' => '1000000',
-        'suffix' => 'تومان'
+        'suffix' => 'ریال'
       ],
       [
         'name' => 'payment',
@@ -51,12 +51,12 @@ class Mehr extends BankConfigBase{
       [
         'name' => 'deposit',
         'label' => 'میانگین حساب',
-        'suffix' => 'تومان'
+        'suffix' => 'ریال'
       ],
       [
         'name' => 'loan_price',
         'label' => 'تسهیلات درخواستی',
-        'suffix' => 'تومان'
+        'suffix' => 'ریال'
       ],
       [
         'name' => 'fee',
@@ -74,7 +74,7 @@ class Mehr extends BankConfigBase{
         'suffix' => 'ماه'
       ]
     ];
-    $this->input_schema = [
+    $this->calc_data = [
       '0' => [
           '24' => [7.6, 15.1, 22.7, 30.9, 39.4, 48.3, 57.5, 67, 76.8, 86.9, 97.4, 108.2],
           '26' => [7.1, 14.2, 21.2, 28.9, 36.9, 45.2, 53.8, 62.7, 71.9, 81.4, 91.2, 101.3],
@@ -149,6 +149,8 @@ class Mehr extends BankConfigBase{
 
   public function set_result_table($result_values): array{
     $result_table = [];
+    //notice: 0, 1 and 2, 3 fee factors are equal
+    $result_values['fee'] = $result_values['fee'] % 2 != 0 ? $result_values['fee'] -= 1 : $result_values['fee'];
     $deposit = $this->calculate($result_values);
     $result_values['deposit'] = $deposit;
     foreach($this->result_schema as $row){

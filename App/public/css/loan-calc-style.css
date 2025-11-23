@@ -133,7 +133,7 @@
     background-color: #f5faff;
     border-radius: 16px;
     cursor: pointer;
-    margin: 0 5px;
+    margin: 5px 5px 5px 0;
     padding: 10px;
     width: 100%;
 }
@@ -259,5 +259,9 @@ hr{
 
     #lcp-form{
         width: 100%;
+    }
+
+    .lcp-options{
+        flex-wrap: wrap;
     }
 }
